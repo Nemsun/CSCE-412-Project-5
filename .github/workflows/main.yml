@@ -27,9 +27,9 @@ jobs:
 
       - name: Copy files to the production website using AWS CLI
         run: |
-          aws s3 sync . s3://csce412npham.xyz --delete
+          aws s3 sync . s3://csce412npham.xyz --delete --cache-control "max-age=0, no-cache, no-store, must-revalidate"
 
-      - name: Copy files to the proudction website website using AWS CLI
+      - name: Copy files to the production website website using AWS CLI
         run: |
           aws cloudfront create-invalidation \
           --distribution-id ${{ env.DIST_ID }} \
